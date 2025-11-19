@@ -53,3 +53,17 @@ export function loadShiftViewPreference() {
     }
     return false; // Default to progress bar view
 }
+
+// Save stats visibility preference to local storage
+export function saveStatsVisibility(isVisible) {
+    localStorage.setItem('statsVisible', JSON.stringify(isVisible));
+}
+
+// Load stats visibility preference from local storage
+export function loadStatsVisibility() {
+    const savedVisibility = localStorage.getItem('statsVisible');
+    if (savedVisibility !== null) {
+        return JSON.parse(savedVisibility);
+    }
+    return true; // Default to visible
+}

@@ -1,6 +1,6 @@
-import { submitButton, editScheduleButton, editScheduleButtonBottom, toggleShiftButton } from './modules/domElements.js';
+import { submitButton, editScheduleButton, editScheduleButtonBottom, toggleShiftButton, toggleStatsButton, progressStats } from './modules/domElements.js';
 import { updateProgress, toggleShiftView } from './modules/uiUpdater.js';
-import { saveScheduleToLocalStorage, loadScheduleFromLocalStorage } from './modules/storage.js';
+import { saveScheduleToLocalStorage, loadScheduleFromLocalStorage, saveStatsVisibility, loadStatsVisibility } from './modules/storage.js';
 import { collapseSettings, expandSettings } from './modules/uiControls.js';
 
 // Initialize the application
@@ -14,11 +14,32 @@ function init() {
         collapseSettings();
     }
     
+    // Load stats visibility preference
+    const statsVisible = loadStatsVisibility();
+    if (!statsVisible) {
+        toggleStats();
+    }
+    
     // Initial progress update
     updateProgress();
     
     // Auto-update every minute
     setInterval(updateProgress, 60000);
+}
+
+// Toggle stats visibility
+function toggleStats() {
+    const isVisible = progressStats.style.display !== 'none';
+    
+    if (isVisible) {
+        progressStats.style.display = 'none';
+        toggleStatsButton.textContent = 'Show Stats';
+    } else {
+        progressStats.style.display = 'grid';
+        toggleStatsButton.textContent = 'Hide Stats';
+    }
+    
+    saveStatsVisibility(!isVisible);
 }
 
 // Set up all event listeners
@@ -39,6 +60,10 @@ function setupEventListeners() {
     
     toggleShiftButton.addEventListener('click', () => {
         toggleShiftView();
+    });
+    
+    toggleStatsButton.addEventListener('click', () => {
+        toggleStats();
     });
 }
 

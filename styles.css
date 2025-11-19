@@ -170,8 +170,14 @@ h1 {
     transform: translateY(0);
 }
 
-.edit-schedule-button-small {
-    width: 100%;
+.bottom-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.toggle-stats-button {
+    flex: 1;
     padding: 10px;
     background: transparent;
     color: #999;
@@ -181,7 +187,29 @@ h1 {
     font-weight: 500;
     cursor: pointer;
     transition: all 0.3s ease;
-    margin-top: 20px;
+}
+
+.toggle-stats-button:hover {
+    background: #f5f5f5;
+    color: #667eea;
+    border-color: #667eea;
+}
+
+.toggle-stats-button:active {
+    transform: scale(0.98);
+}
+
+.edit-schedule-button-small {
+    flex: 1;
+    padding: 10px;
+    background: transparent;
+    color: #999;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 0.9em;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 .edit-schedule-button-small:hover {
@@ -211,7 +239,8 @@ h1 {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 15px;
-    margin-bottom: 25px;
+    margin-top: 20px;
+    margin-bottom: 15px;
 }
 
 .stat {
@@ -381,7 +410,7 @@ h1 {
     right: 0;
     text-align: right;
     padding: 20px;
-    color: white;
+    color: rgba(255, 255, 255, 0.5);
     font-size: 0.9em;
     opacity: 0.8;
 }

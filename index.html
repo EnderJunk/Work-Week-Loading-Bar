@@ -69,21 +69,6 @@
         <div class="progress-section">
             <h2>Your Progress to the Weekend</h2>
             
-            <div class="progress-stats">
-                <div class="stat">
-                    <span class="stat-label">Hours Worked:</span>
-                    <span id="hours-worked" class="stat-value">0</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-label">Total Hours:</span>
-                    <span id="total-hours" class="stat-value">0</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-label">Progress:</span>
-                    <span id="percentage" class="stat-value">0%</span>
-                </div>
-            </div>
-            
             <div class="progress-bar-container">
                 <div id="progress-bar" class="progress-bar">
                     <span id="progress-text" class="progress-text">0%</span>
@@ -106,9 +91,27 @@
                 <div id="status-text" class="status-text"></div>
             </div>
             
-            <button id="edit-schedule-btn-bottom" class="edit-schedule-button-small" style="display: none;">
-                ✏️ Edit Schedule
-            </button>
+            <div class="progress-stats" id="progress-stats">
+                <div class="stat">
+                    <span class="stat-label">Hours Worked:</span>
+                    <span id="hours-worked" class="stat-value">0</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Total Hours:</span>
+                    <span id="total-hours" class="stat-value">0</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Progress:</span>
+                    <span id="percentage" class="stat-value">0%</span>
+                </div>
+            </div>
+            
+            <div class="bottom-buttons">
+                <button id="toggle-stats-btn" class="toggle-stats-button">Hide Stats</button>
+                <button id="edit-schedule-btn-bottom" class="edit-schedule-button-small" style="display: none;">
+                    ✏️ Edit Schedule
+                </button>
+            </div>
         </div>
     </div>
     
