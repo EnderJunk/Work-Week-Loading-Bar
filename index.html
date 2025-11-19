@@ -91,7 +91,7 @@
                 <div id="status-text" class="status-text"></div>
             </div>
             
-            <div class="progress-stats" id="progress-stats">
+            <div class="progress-stats" id="progress-stats" style="display: none;">
                 <div class="stat">
                     <span class="stat-label">Hours Worked:</span>
                     <span id="hours-worked" class="stat-value">0</span>
@@ -107,15 +107,58 @@
             </div>
             
             <div class="bottom-buttons">
-                <button id="toggle-stats-btn" class="toggle-stats-button">Hide Stats</button>
+                <button id="toggle-stats-btn" class="toggle-stats-button">Show Stats</button>
                 <button id="edit-schedule-btn-bottom" class="edit-schedule-button-small" style="display: none;">
                     ✏️ Edit Schedule
                 </button>
             </div>
         </div>
+        
+        <div class="annual-section" id="annual-section" style="display: none;">
+            <h2>Annual Work Progress</h2>
+            <p class="annual-subtitle">Your work progress through the year</p>
+            
+            <div class="annual-progress-bar-container">
+                <div id="annual-progress-bar" class="annual-progress-bar">
+                    <span id="annual-progress-text" class="annual-progress-text">0%</span>
+                </div>
+            </div>
+            
+            <div class="annual-stats" id="annual-stats" style="display: none;">
+                <div class="annual-stat">
+                    <span class="stat-label">Work Days Completed:</span>
+                    <span id="days-passed" class="stat-value">0</span>
+                </div>
+                <div class="annual-stat">
+                    <span class="stat-label">Work Days Remaining:</span>
+                    <span id="days-remaining" class="stat-value">0</span>
+                </div>
+                <div class="annual-stat">
+                    <span class="stat-label">Total Work Days:</span>
+                    <span id="total-work-days" class="stat-value">0</span>
+                </div>
+                <div class="annual-stat">
+                    <span class="stat-label">Hours Worked:</span>
+                    <span id="annual-hours-worked" class="stat-value">0</span>
+                </div>
+                <div class="annual-stat">
+                    <span class="stat-label">Hours Remaining:</span>
+                    <span id="annual-hours-remaining" class="stat-value">0</span>
+                </div>
+                <div class="annual-stat">
+                    <span class="stat-label">Progress:</span>
+                    <span id="annual-percentage" class="stat-value">0</span>
+                </div>
+            </div>
+            
+            <div class="annual-button-container">
+                <button id="toggle-annual-stats-btn" class="toggle-annual-stats-button">Show Stats</button>
+            </div>
+        </div>
     </div>
     
     <footer class="footer">
+        <button id="secret-btn" class="secret-button">do not click</button>
         <p>Developed by Ender</p>
     </footer>
     

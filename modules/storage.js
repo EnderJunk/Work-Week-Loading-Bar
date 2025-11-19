@@ -65,5 +65,5 @@ export function loadStatsVisibility() {
     if (savedVisibility !== null) {
         return JSON.parse(savedVisibility);
     }
-    return true; // Default to visible
+    return false; // Default to hidden
 }
