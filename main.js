@@ -1,5 +1,5 @@
-import { submitButton, editScheduleButton, editScheduleButtonBottom } from './modules/domElements.js';
-import { updateProgress } from './modules/uiUpdater.js';
+import { submitButton, editScheduleButton, editScheduleButtonBottom, toggleShiftButton } from './modules/domElements.js';
+import { updateProgress, toggleShiftView } from './modules/uiUpdater.js';
 import { saveScheduleToLocalStorage, loadScheduleFromLocalStorage } from './modules/storage.js';
 import { collapseSettings, expandSettings } from './modules/uiControls.js';
 
@@ -35,6 +35,10 @@ function setupEventListeners() {
 
     editScheduleButtonBottom.addEventListener('click', () => {
         expandSettings();
+    });
+    
+    toggleShiftButton.addEventListener('click', () => {
+        toggleShiftView();
     });
 }
 

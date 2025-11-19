@@ -39,3 +39,17 @@ export function loadScheduleFromLocalStorage() {
     }
     return false;
 }
+
+// Save shift view preference to local storage
+export function saveShiftViewPreference(showTimeRemaining) {
+    localStorage.setItem('shiftViewPreference', JSON.stringify(showTimeRemaining));
+}
+
+// Load shift view preference from local storage
+export function loadShiftViewPreference() {
+    const savedPreference = localStorage.getItem('shiftViewPreference');
+    if (savedPreference !== null) {
+        return JSON.parse(savedPreference);
+    }
+    return false; // Default to progress bar view
+}

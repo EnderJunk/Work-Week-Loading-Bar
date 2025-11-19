@@ -1,6 +1,50 @@
 import { startTimeInput, endTimeInput } from './domElements.js';
 import { getWorkingDays, getHoursPerDay, getCurrentDateTime } from './schedule.js';
 
+// Calculate today's shift progress
+export function calculateShiftProgress() {
+    const { currentTimeInMinutes } = getCurrentDateTime();
+    const [startHour, startMinute] = startTimeInput.value.split(':').map(Number);
+    const [endHour, endMinute] = endTimeInput.value.split(':').map(Number);
+    const shiftStartMinutes = startHour * 60 + startMinute;
+    const shiftEndMinutes = endHour * 60 + endMinute;
+    
+    const shiftTotalMinutes = shiftEndMinutes - shiftStartMinutes;
+    
+    if (currentTimeInMinutes < shiftStartMinutes) {
+        return {
+            percentage: 0,
+            minutesWorked: 0,
+            totalMinutes: shiftTotalMinutes,
+            minutesRemaining: shiftTotalMinutes,
+            isBeforeShift: true,
+            isAfterShift: false
+        };
+    } else if (currentTimeInMinutes >= shiftEndMinutes) {
+        return {
+            percentage: 100,
+            minutesWorked: shiftTotalMinutes,
+            totalMinutes: shiftTotalMinutes,
+            minutesRemaining: 0,
+            isBeforeShift: false,
+            isAfterShift: true
+        };
+    } else {
+        const minutesWorked = currentTimeInMinutes - shiftStartMinutes;
+        const minutesRemaining = shiftEndMinutes - currentTimeInMinutes;
+        const percentage = (minutesWorked / shiftTotalMinutes) * 100;
+        
+        return {
+            percentage: percentage,
+            minutesWorked: minutesWorked,
+            totalMinutes: shiftTotalMinutes,
+            minutesRemaining: minutesRemaining,
+            isBeforeShift: false,
+            isAfterShift: false
+        };
+    }
+}
+
 // Calculate work week progress
 export function calculateProgress() {
     const workingDays = getWorkingDays();
