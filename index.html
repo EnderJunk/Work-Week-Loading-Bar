@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work Week Loading Bar</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Work Week Progress Tracker</h1>
+        <p class="subtitle">Track your progress to the weekend! 🎉</p>
+        
+        <div class="settings-panel" id="settings-panel">
+            <h2>Configure Your Work Schedule</h2>
+            
+            <div class="days-selection">
+                <h3>Select Working Days:</h3>
+                <div class="day-checkboxes">
+                    <label>
+                        <input type="checkbox" id="monday" value="1" checked>
+                        <span>Monday</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="tuesday" value="2" checked>
+                        <span>Tuesday</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="wednesday" value="3" checked>
+                        <span>Wednesday</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="thursday" value="4" checked>
+                        <span>Thursday</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="friday" value="5" checked>
+                        <span>Friday</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="saturday" value="6">
+                        <span>Saturday</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="sunday" value="0">
+                        <span>Sunday</span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="time-selection">
+                <div class="time-input">
+                    <label for="start-time">Shift Start Time:</label>
+                    <input type="time" id="start-time" value="09:00">
+                </div>
+                <div class="time-input">
+                    <label for="end-time">Shift End Time:</label>
+                    <input type="time" id="end-time" value="17:00">
+                </div>
+            </div>
+            
+            <button id="submit-btn" class="submit-button">Save Schedule</button>
+        </div>
+        
+        <button id="edit-schedule-btn" class="edit-schedule-button" style="display: none;">
+            ✏️ Edit Your Schedule
+        </button>
+        
+        <div class="progress-section">
+            <h2>Your Progress to the Weekend</h2>
+            
+            <div class="progress-stats">
+                <div class="stat">
+                    <span class="stat-label">Hours Worked:</span>
+                    <span id="hours-worked" class="stat-value">0</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Total Hours:</span>
+                    <span id="total-hours" class="stat-value">0</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Progress:</span>
+                    <span id="percentage" class="stat-value">0%</span>
+                </div>
+            </div>
+            
+            <div class="progress-bar-container">
+                <div id="progress-bar" class="progress-bar">
+                    <span id="progress-text" class="progress-text">0%</span>
+                </div>
+            </div>
+            
+            <div id="status-message" class="status-message"></div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
