@@ -1,4 +1,4 @@
-import { submitButton, editScheduleButton, editScheduleButtonBottom, toggleShiftButton, toggleStatsButton, progressStats, secretButton, annualSection, annualProgressBar, annualProgressText, annualStats, toggleAnnualStatsButton, daysPassed, daysRemaining, totalWorkDays, annualHoursWorked, annualHoursRemaining, annualPercentage, startTimeInput, endTimeInput } from './modules/domElements.js';
+import { submitButton, editScheduleButton, editScheduleButtonBottom, toggleShiftButton, toggleStatsButton, progressStats, secretButton, annualSection, annualProgressBar, annualProgressText, startTimeInput, endTimeInput } from './modules/domElements.js';
 import { updateProgress, toggleShiftView } from './modules/uiUpdater.js';
 import { saveScheduleToLocalStorage, loadScheduleFromLocalStorage, saveStatsVisibility, loadStatsVisibility } from './modules/storage.js';
 import { collapseSettings, expandSettings } from './modules/uiControls.js';
@@ -71,25 +71,6 @@ function updateAnnualProgress() {
     
     annualProgressBar.style.width = `${progress.percentage}%`;
     annualProgressText.textContent = `${progress.percentage}%`;
-    daysPassed.textContent = progress.workDaysPassed;
-    daysRemaining.textContent = progress.workDaysRemaining;
-    totalWorkDays.textContent = progress.totalWorkDays;
-    annualHoursWorked.textContent = progress.hoursWorked;
-    annualHoursRemaining.textContent = progress.hoursRemaining;
-    annualPercentage.textContent = `${progress.percentage}%`;
-}
-
-// Toggle annual stats visibility
-function toggleAnnualStats() {
-    const isVisible = annualStats.style.display !== 'none';
-    
-    if (isVisible) {
-        annualStats.style.display = 'none';
-        toggleAnnualStatsButton.textContent = 'Show Stats';
-    } else {
-        annualStats.style.display = 'grid';
-        toggleAnnualStatsButton.textContent = 'Hide Stats';
-    }
 }
 
 // Set up all event listeners
@@ -118,10 +99,6 @@ function setupEventListeners() {
     
     secretButton.addEventListener('click', () => {
         toggleAnnualSection();
-    });
-    
-    toggleAnnualStatsButton.addEventListener('click', () => {
-        toggleAnnualStats();
     });
 }
 
