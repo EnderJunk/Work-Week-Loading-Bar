@@ -9,7 +9,9 @@ body {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     min-height: 100vh;
     padding: 20px;
+    padding-bottom: 60px;
     color: #333;
+    position: relative;
 }
 
 .container {
@@ -291,6 +293,21 @@ h1 {
 .status-message.complete {
     background: #d1ecf1;
     color: #0c5460;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    text-align: right;
+    padding: 20px;
+    color: hsla(0, 0%, 100%, 0.5);
+    font-size: 0.9em;
+    opacity: 0.8;
+}
+
+.footer p {
+    margin: 0;
 }
 
 @media (max-width: 600px) {
