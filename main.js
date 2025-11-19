@@ -1,4 +1,4 @@
-import { submitButton, editScheduleButton, editScheduleButtonBottom, toggleShiftButton, toggleStatsButton, progressStats, secretButton, annualSection, annualProgressBar, annualProgressText, startTimeInput, endTimeInput } from './modules/domElements.js';
+import { submitButton, editScheduleButton, editScheduleButtonBottom, toggleShiftButton, toggleStatsButton, progressStats, secretButton, annualSection, annualProgressBar, annualProgressText, annualHoursRemainingText, startTimeInput, endTimeInput } from './modules/domElements.js';
 import { updateProgress, toggleShiftView } from './modules/uiUpdater.js';
 import { saveScheduleToLocalStorage, loadScheduleFromLocalStorage, saveStatsVisibility, loadStatsVisibility } from './modules/storage.js';
 import { collapseSettings, expandSettings } from './modules/uiControls.js';
@@ -71,6 +71,7 @@ function updateAnnualProgress() {
     
     annualProgressBar.style.width = `${progress.percentage}%`;
     annualProgressText.textContent = `${progress.percentage}%`;
+    annualHoursRemainingText.textContent = `${progress.hoursRemaining} hours remaining`;
 }
 
 // Set up all event listeners

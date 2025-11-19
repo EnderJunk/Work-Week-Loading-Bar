@@ -457,6 +457,14 @@ h1 {
     transform: translateX(-50%);
 }
 
+.annual-hours-remaining {
+    text-align: center;
+    font-size: 0.75em;
+    color: #999;
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
 .footer {
     position: fixed;
     bottom: 0;

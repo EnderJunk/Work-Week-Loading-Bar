@@ -18,6 +18,7 @@ export const secretButton = document.getElementById('secret-btn');
 export const annualSection = document.getElementById('annual-section');
 export const annualProgressBar = document.getElementById('annual-progress-bar');
 export const annualProgressText = document.getElementById('annual-progress-text');
+export const annualHoursRemainingText = document.getElementById('annual-hours-remaining');
 export const statusText = document.getElementById('status-text');
 export const shiftProgressSection = document.getElementById('shift-progress-section');
 export const shiftLabel = document.getElementById('shift-label');
