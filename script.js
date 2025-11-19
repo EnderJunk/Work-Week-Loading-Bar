@@ -4,6 +4,7 @@ const startTimeInput = document.getElementById('start-time');
 const endTimeInput = document.getElementById('end-time');
 const submitButton = document.getElementById('submit-btn');
 const editScheduleButton = document.getElementById('edit-schedule-btn');
+const editScheduleButtonBottom = document.getElementById('edit-schedule-btn-bottom');
 const settingsPanel = document.getElementById('settings-panel');
 const progressBar = document.getElementById('progress-bar');
 const progressText = document.getElementById('progress-text');
@@ -199,12 +200,14 @@ function loadScheduleFromLocalStorage() {
 
 function collapseSettings() {
     settingsPanel.style.display = 'none';
-    editScheduleButton.style.display = 'block';
+    editScheduleButton.style.display = 'none';
+    editScheduleButtonBottom.style.display = 'block';
 }
 
 function expandSettings() {
     settingsPanel.style.display = 'block';
     editScheduleButton.style.display = 'none';
+    editScheduleButtonBottom.style.display = 'none';
 }
 
 // Event listeners
@@ -215,6 +218,10 @@ submitButton.addEventListener('click', () => {
 });
 
 editScheduleButton.addEventListener('click', () => {
+    expandSettings();
+});
+
+editScheduleButtonBottom.addEventListener('click', () => {
     expandSettings();
 });
 
