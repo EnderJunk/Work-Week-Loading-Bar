@@ -29,31 +29,24 @@ function init() {
     setInterval(updateProgress, 60000);
 }
 
+// Generic toggle visibility function
+function toggleElement(element, button, showText, hideText, saveCallback = null) {
+    const isVisible = element.style.display !== 'none';
+    element.style.display = isVisible ? 'none' : (element.classList.contains('progress-stats') ? 'grid' : 'block');
+    if (button) button.textContent = isVisible ? showText : hideText;
+    if (saveCallback) saveCallback(!isVisible);
+}
+
 // Toggle stats visibility
 function toggleStats() {
-    const isVisible = progressStats.style.display !== 'none';
-    
-    if (isVisible) {
-        progressStats.style.display = 'none';
-        toggleStatsButton.textContent = 'Show Stats';
-    } else {
-        progressStats.style.display = 'grid';
-        toggleStatsButton.textContent = 'Hide Stats';
-    }
-    
-    saveStatsVisibility(!isVisible);
+    toggleElement(progressStats, toggleStatsButton, 'Show Stats', 'Hide Stats', saveStatsVisibility);
 }
 
 // Toggle annual section
 function toggleAnnualSection() {
     const isVisible = annualSection.style.display !== 'none';
-    
-    if (isVisible) {
-        annualSection.style.display = 'none';
-    } else {
-        annualSection.style.display = 'block';
-        updateAnnualProgress();
-    }
+    if (!isVisible) updateAnnualProgress();
+    toggleElement(annualSection, null, null, null);
 }
 
 // Update annual progress
@@ -76,30 +69,21 @@ function updateAnnualProgress() {
 
 // Set up all event listeners
 function setupEventListeners() {
-    submitButton.addEventListener('click', () => {
-        saveScheduleToLocalStorage();
-        collapseSettings();
-        updateProgress();
-    });
-
-    editScheduleButton.addEventListener('click', () => {
-        expandSettings();
-    });
-
-    editScheduleButtonBottom.addEventListener('click', () => {
-        expandSettings();
-    });
+    const eventMap = [
+        [submitButton, () => {
+            saveScheduleToLocalStorage();
+            collapseSettings();
+            updateProgress();
+        }],
+        [editScheduleButton, expandSettings],
+        [editScheduleButtonBottom, expandSettings],
+        [toggleShiftButton, toggleShiftView],
+        [toggleStatsButton, toggleStats],
+        [secretButton, toggleAnnualSection]
+    ];
     
-    toggleShiftButton.addEventListener('click', () => {
-        toggleShiftView();
-    });
-    
-    toggleStatsButton.addEventListener('click', () => {
-        toggleStats();
-    });
-    
-    secretButton.addEventListener('click', () => {
-        toggleAnnualSection();
+    eventMap.forEach(([button, handler]) => {
+        button.addEventListener('click', handler);
     });
 }
 

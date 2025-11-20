@@ -67,26 +67,30 @@ export function updateProgress() {
 function updateShiftProgress() {
     const shiftProgress = calculateShiftProgress();
     
+    const elements = {
+        label: shiftLabel,
+        barContainer: shiftProgressBar.parentElement,
+        timeInfo: shiftTimeInfo
+    };
+    
     if (showTimeRemaining) {
-        // Show time remaining view
         const hours = Math.floor(shiftProgress.minutesRemaining / 60);
         const minutes = shiftProgress.minutesRemaining % 60;
         
         shiftTimeInfo.textContent = `💼 Currently working! ${hours}h ${minutes}m until end of shift`;
-        
         toggleShiftButton.textContent = '📊 Progress Bar';
-        shiftLabel.style.display = 'none';
-        shiftProgressBar.parentElement.style.display = 'none';
-        shiftTimeInfo.style.display = 'block';
+        
+        elements.label.style.display = 'none';
+        elements.barContainer.style.display = 'none';
+        elements.timeInfo.style.display = 'block';
     } else {
-        // Show progress bar view
         shiftProgressBar.style.width = `${shiftProgress.percentage}%`;
         shiftProgressText.textContent = `${shiftProgress.percentage.toFixed(0)}%`;
-        
         toggleShiftButton.textContent = '⏱️ Time Left';
-        shiftLabel.style.display = 'block';
-        shiftProgressBar.parentElement.style.display = 'block';
-        shiftTimeInfo.style.display = 'none';
+        
+        elements.label.style.display = 'block';
+        elements.barContainer.style.display = 'block';
+        elements.timeInfo.style.display = 'none';
     }
 }
 
