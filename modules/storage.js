@@ -1,4 +1,4 @@
-import { checkboxes, startTimeInput, endTimeInput } from './domElements.js';
+import { checkboxes, startTimeInput, endTimeInput, hourlyRateInput, savingsAmountInput, paymentTypeRadios } from './domElements.js';
 import { getWorkingDays } from './schedule.js';
 
 // Save schedule to local storage
@@ -66,4 +66,46 @@ export function loadStatsVisibility() {
         return JSON.parse(savedVisibility);
     }
     return false; // Default to hidden
+}
+
+// Save luxury calculator data to local storage
+export function saveLuxuryDataToLocalStorage() {
+    const luxuryData = {
+        paymentType: document.querySelector('input[name="payment-type"]:checked').value,
+        rate: hourlyRateInput.value,
+        savings: savingsAmountInput.value
+    };
+    localStorage.setItem('luxuryData', JSON.stringify(luxuryData));
+}
+
+// Load luxury calculator data from local storage
+export function loadLuxuryDataFromLocalStorage() {
+    const luxuryData = localStorage.getItem('luxuryData');
+    if (luxuryData) {
+        try {
+            const data = JSON.parse(luxuryData);
+            hourlyRateInput.value = data.rate || '';
+            savingsAmountInput.value = data.savings || '';
+            
+            // Set the payment type radio button
+            paymentTypeRadios.forEach(radio => {
+                if (radio.value === data.paymentType) {
+                    radio.checked = true;
+                }
+            });
+            
+            // Trigger payment type change to update label
+            const event = new Event('change');
+            const checkedRadio = document.querySelector('input[name="payment-type"]:checked');
+            if (checkedRadio) {
+                checkedRadio.dispatchEvent(event);
+            }
+            
+            return true;
+        } catch (e) {
+            console.error('Error loading luxury data:', e);
+            return false;
+        }
+    }
+    return false;
 }
